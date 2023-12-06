@@ -86,9 +86,9 @@ const Signup = () => {
                   </Link>
                 </div>
                 <div className="text-center">
-                  <a className="small" href="login.html">
+                  <Link className="btn" to="/login">
                     Already have an account? Login!
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

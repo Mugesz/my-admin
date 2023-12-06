@@ -1,59 +1,34 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
+import { useDarkMode } from "./DarkModeContext";
 
 const Topbar = () => {
+  const { isDark, toggleDarkMode } = useDarkMode();
+
   return (
-   <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-    <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
-        <i className="fa fa-bars"></i>
-    </button>
-
-    <form
-        className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-        <div className="input-group">
-            <input type="text" className="form-control bg-light border-0 small" placeholder="Search for..."
-                aria-label="Search" aria-describedby="basic-addon2" />
-            <div className="input-group-append">
-                <button className="btn btn-primary" type="button">
-                    <i className="fas fa-search fa-sm"></i>
-                </button>
-            </div>
+    <nav
+      className={`navbar ${
+        isDark ? "navbar-dark bg-gradient-info" : "bg-dark text-light"
+      }`}
+    >
+      <div className="container-fluid d-flex justify-content-between align-items-center">
+        <h1 className={`text-${isDark ? "light" : "light"}`}>
+          Order Management
+        </h1>
+        <div>
+          <Link to="/login">
+            <button className="btn btn-facebook">Login</button>
+          </Link>
+          <Link to="/signup">
+            <button className="btn btn-google ml-4">Signup</button>
+          </Link>
+          <button className="btn btn-light ml-4" onClick={toggleDarkMode}>
+            {isDark ? "Light Mode" : "Dark Mode"}
+          </button>
         </div>
-    </form>
+      </div>
+    </nav>
+  );
+};
 
-    <ul className="navbar-nav ml-auto">
-
-        <li className="nav-item dropdown no-arrow d-sm-none">
-            <a className="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i className="fas fa-search fa-fw"></i>
-            </a>
-            <div className="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                aria-labelledby="searchDropdown">
-                <form className="form-inline mr-auto w-100 navbar-search">
-                    <div className="input-group">
-                        <input type="text" className="form-control bg-light border-0 small"
-                            placeholder="Search for..." aria-label="Search"
-                            aria-describedby="basic-addon2" />
-                        <div className="input-group-append">
-                            <button className="btn btn-primary" type="button">
-                                <i className="fas fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </li>
-        <li>
-            <button  type="button" className="btn btn-outline-info">
-                <Link  to="/login">LOGIN</Link>
-            </button>
-        </li>
-    </ul>
-
-</nav>
-  )
-}
-
-export default Topbar
+export default Topbar;

@@ -1,0 +1,40 @@
+.topsie {
+  background-image: url(../asserts/bg_1.jpg);
+}
+
+thead.position-sticky {
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+.MuiTablePagination-root {
+  position: sticky;
+  bottom: 0;
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+.active {
+  background-color: rgb(8, 153, 249);
+  border-radius: 50px;
+  color: #fff;
+}
+
+.transit {
+  box-shadow: 5px 5px 10px;
+  transform: translateY(-10px);
+  cursor: pointer;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #fff; /* Change this to your desired background color */
+}
+
+.card-body{
+  padding: 1rem !important;
+}

@@ -1,63 +1,46 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import "./cssFile/Components.css";
 
 const Sidebar = () => {
-    return (
-        <div>
-            {" "}
-            <ul
-                className="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion"
-                id="accordionSidebar"
-            >
-                <a
-                    className="sidebar-brand d-flex align-items-center justify-content-center"
-                    href="index.html"
-                >
-                    <div className="sidebar-brand-icon rotate-n-15">
-                        <i className="fas fa-laugh-wink"></i>
-                    </div>
-                    <div className="sidebar-brand-text mx-3">
-                        Admin 
-                    </div>
-                </a>
+  const location = useLocation();
 
-                <hr className="sidebar-divider my-0" />
+  return (
+    <div className="text-center">
+      <ul
+        className="navbar-nav  sidebar sidebar-dark accordion topsie text-center"
+        id="accordionSidebar"
+      >
+        <Link
+          className="sidebar-brand d-flex align-items-center justify-content-center"
+          to="/"
+        >
+          <div className="sidebar-brand-text text-black-50 mx-3">ORDER</div>
+        </Link>
 
-                <li className="nav-item active">
-                    <Link className="nav-link" to="/dashboard">
-                        <i className="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span>
-                    </Link>
-                </li>
+        <hr className="sidebar-divider my-0" />
+        <hr className="sidebar-divider" />
 
-                <hr className="sidebar-divider" />
-                <li className="nav-item">
-                    <Link className="nav-link" to="/order">
-                        <i className="fas fa-fw fa-chart-area"></i>
-                        <span>Order</span>
-                    </Link>
-                </li>
+        <li className={`nav-item ${location.pathname === '/' ? 'active' : ''}`}>
+          <Link className="nav-link  " to="/">
+            <span className="orders">Order</span>
+          </Link>
+        </li>
 
-                <li className="nav-item">
-                    <Link className="nav-link" to="/listing">
-                        <i className="fas fa-fw fa-table"></i>
-                        <span>Listing</span>
-                    </Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link" to="/admin">
-                        <i className="fas fa-fw fa-table"></i>
-                        <span>Admin</span>
-                    </Link>
-                </li><li className="nav-item">
-                    <Link className="nav-link" to="/settings">
-                        <i className="fas fa-fw fa-table"></i>
-                        <span>Settings</span>
-                    </Link>
-                </li>
-            </ul>
-        </div>
-    );
+        <li className={`nav-item ${location.pathname === '/settings' ? 'active' : ''}`}>
+          <Link className="nav-link" to="/settings">
+            <span className="orders">Settings</span>
+          </Link>
+        </li>
+
+        <li className={`nav-item ${location.pathname === '/login' ? 'active' : ''}`}>
+          <Link className="nav-link" to="/login">
+            <span className="orders">Login</span>
+          </Link>
+        </li>
+      </ul>
+    </div>
+  );
 };
 
 export default Sidebar;

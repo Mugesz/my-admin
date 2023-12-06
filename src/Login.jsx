@@ -88,6 +88,11 @@ const Login = () => {
             </div>
           </div>
         </div>
+        <div className="text-center">
+          <Link to="/signup">
+          <button className="btn btn-info">Signup</button>
+          </Link>
+        </div>
       </div>
   );
 };

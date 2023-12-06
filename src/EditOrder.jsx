@@ -1,34 +1,53 @@
-import { useFormik } from "formik";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useFormik } from "formik";
+import { Link, useParams } from "react-router-dom";
 
-const Createuser = () => {
+const EditOrder = () => {
+  const { id } = useParams();
+
   const formik = useFormik({
     initialValues: {
-      orderId:"",
+      orderId: "",
       orderNumber: "",
       status: "",
       item: "",
       customerName: "",
       trackingCode: "",
-      status: "",
     },
-
-    onSubmit: async (values, formikbag) => {
+    onSubmit: async (values,formikbag) => {
+      console.log("Form submitted with values:", values);
       try {
-        await axios.post(
-          "https://65630c3eee04015769a6bb77.mockapi.io/orders",
+        await axios.put(
+          `https://65630c3eee04015769a6bb77.mockapi.io/orders/${id}`,
           values
         );
-        alert("data posted");
+
+        alert("Order has been updated successfully");
+        formikbag.resetForm()
       } catch (error) {
         console.error(error);
-        alert("something went wrong");
+        alert("Something went wrong");
       }
-      formikbag.resetForm();
     },
   });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://65630c3eee04015769a6bb77.mockapi.io/orders/${id}`
+        );
+
+        formik.setValues(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <div className="container-fluid">
@@ -45,8 +64,8 @@ const Createuser = () => {
               />
             </div>
             <div className="col-lg-4">
-              <label>ORDER NUMBER </label>
-              <input 
+              <label>ORDER NUMBER</label>
+              <input
                 type="text"
                 className="form-control"
                 name="orderNumber"
@@ -95,23 +114,19 @@ const Createuser = () => {
                 onChange={formik.handleChange}
               />
             </div>
-            <div className="col-lg-12 mt-4">
-              <input
-                type="submit"
-                className="btn btn-primary"
-                value={"Submit"}
-              />
-            </div>
+          </div>
+          <div className="col-lg-12 mt-4">
+            <input type="submit" className="btn btn-primary" value={"Update"} />
           </div>
         </form>
       </div>
       <div className="text-center">
         <Link className="btn" to="/">
-          <button className="btn btn-success ml-5">view orders</button>
+          <button className="btn btn-success ml-5">View Orders</button>
         </Link>
       </div>
     </>
   );
 };
 
-export default Createuser;
+export default EditOrder;
