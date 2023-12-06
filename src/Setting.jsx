@@ -11,15 +11,15 @@ import {
   faCog,
   faScrewdriver,
 } from "@fortawesome/free-solid-svg-icons";
-import { useDarkMode } from "./DarkModeContext";
+;
 
 const Setting = () => {
-  const { isDark } = useDarkMode();
+ 
   return (
-    <div className={isDark ? "bg-light" : "bg-dark"}>
+    <div className= "bg-light">
       <Topbar />
       <div className="container-fluid">
-        <div className="row row-cols-2 row-cols-md-4 g-4">
+        <div className="row row-cols-2 row-cols-md-4 g-4 mt-3">
           <div className="col mt-4 transit">
             <div className="card  bg-gradient-warning">
               <div class="card-header text-light bg-gradient-warning">
@@ -228,78 +228,6 @@ const Setting = () => {
                   Lorem{" "}
                   <span>
                     <FontAwesomeIcon icon={faToolbox} />
-                  </span>{" "}
-                </h5>
-                <p class="card-text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col  mt-4 transit">
-            <div className="card  bg-gradient-warning">
-              <div class="card-header text-light bg-gradient-warning">
-                Header
-              </div>
-              <div class="card-body text-light">
-                <h5 class="card-title">
-                  Lorem{" "}
-                  <span>
-                    <FontAwesomeIcon icon={faTasks} />
-                  </span>
-                </h5>
-                <p class="card-text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col  mt-4 transit">
-            <div className="card  bg-gradient-warning">
-              <div class="card-header text-light bg-gradient-warning">
-                Header
-              </div>
-              <div class="card-body text-light">
-                <h5 class="card-title">
-                  Lorem{" "}
-                  <span>
-                    <FontAwesomeIcon icon={faHammer} />
-                  </span>{" "}
-                </h5>
-                <p class="card-text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col  mt-4 transit">
-            <div className="card  bg-gradient-warning">
-              <div class="card-header text-light bg-gradient-warning">
-                Header
-              </div>
-              <div class="card-body text-light">
-                <h5 class="card-title">
-                  Lorem{" "}
-                  <span>
-                    <FontAwesomeIcon icon={faCog} />
-                  </span>{" "}
-                </h5>
-                <p class="card-text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col  mt-4 transit">
-            <div className="card  bg-gradient-warning">
-              <div class="card-header text-light  bg-gradient-warning">
-                Header
-              </div>
-              <div class="card-body text-light">
-                <h5 class="card-title">
-                  Lorem{" "}
-                  <span>
-                    <FontAwesomeIcon icon={faScrewdriver} />
                   </span>{" "}
                 </h5>
                 <p class="card-text">

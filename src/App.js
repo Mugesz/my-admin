@@ -2,7 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "bootstrap";
-import { DarkModeProvider } from "./DarkModeContext";
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 import Sidebar from "./Sidebar";
 import Login from "./Login";
 import Signup from "./Signup";
@@ -14,7 +15,7 @@ import EditOrder from "./EditOrder";
 
 function App() {
   return (
-    <DarkModeProvider>
+  
       <Router>
         <div className="" id="wrapper">
           <Sidebar />
@@ -36,7 +37,7 @@ function App() {
           </div>
       
       </Router>
-    </DarkModeProvider>
+  
   );
 }
 

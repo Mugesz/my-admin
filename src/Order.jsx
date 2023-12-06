@@ -4,7 +4,6 @@ import "./cssFile/Components.css";
 import axios from "axios";
 import { TablePagination } from "@mui/material";
 import Topbar from "./Topbar";
-import { useDarkMode } from "./DarkModeContext";
 
 const UserList = () => {
   const [myData, setMyData] = useState([]);
@@ -12,8 +11,7 @@ const UserList = () => {
   const [page, setPage] = useState(0);
   const [perPage, setPerpage] = useState(10);
  
-  const { isDark } = useDarkMode();
-
+ 
   const handleChangeperPage = (e, newPage) => {
     setPage(newPage);
   };
@@ -54,7 +52,7 @@ const UserList = () => {
     allData();
   }, []);
   return (
-    <div className={isDark ? "bg-light" : "bg-dark"}>
+    <div className="bg-light" >
       {" "}
       <Topbar />
       <div className="d-sm-flex align-items-center justify-content-between mb-4">
@@ -81,20 +79,19 @@ const UserList = () => {
         />
       </div>
       <div
-        className={
-          isDark ? "card shadow mb-4 bg-dark " : "card shadow mb-4 bg-light"
-        }
+        className=
+          "card shadow  bg-light"
+      
       >
         <div
-          className={
-            isDark
-              ? "card-header bg-light py-3 "
-              : "card-header bg-dark py-3 text-light"
-          }
-          style={{ maxHeight: "650px" }}
+          className=
+           "card-header bg-light"
+             
+
+   
         >
           <div className="card-body ">
-            <div className="table-responsive" style={{ maxHeight: "650px" }}>
+            <div className="table-responsive" style={{ maxHeight: "410px" }}>
               <table
                 className="table table-bordered"
                 id="dataTable"
@@ -102,13 +99,13 @@ const UserList = () => {
               >
                 <thead className="position-sticky">
                   <tr>
-                    <th>ORDER ID</th>
-                    <th>ORDER NUMBER</th>
-                    <th>ITEM</th>
-                    <th>CUSTOMER NAME</th>
-                    <th>TRACKING CODE</th>
-                    <th>status</th>
-                    <th>Action</th>
+                    <th className="bg-gradient-success text-light">ORDER ID</th>
+                    <th className="bg-gradient-success text-light">ORDER NUMBER</th>
+                    <th className="bg-gradient-success text-light">ITEM</th>
+                    <th className="bg-gradient-success text-light">CUSTOMER NAME</th>
+                    <th className="bg-gradient-success text-light">TRACKING CODE</th>
+                    <th className="bg-gradient-success text-light">status</th>
+                    <th className="bg-gradient-success text-light">Action</th>
                   </tr>
                 </thead>
                 <tbody>
