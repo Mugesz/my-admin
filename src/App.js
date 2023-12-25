@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css'
-
 import Sidebar from "./Sidebar";
 import Login from "./Login";
 import Signup from "./Signup";
