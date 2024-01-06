@@ -17,9 +17,7 @@ function App() {
   
       <Router>
         <div className="" id="wrapper">
-          <Sidebar />
-             
-         
+          <Sidebar />      
           <div id="content-wrapper" className="d-flex flex-column">
             <div className="container-fluid">
               <Routes>

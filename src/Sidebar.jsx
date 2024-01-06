@@ -8,7 +8,7 @@ const Sidebar = () => {
   return (
     <div className="text-center">
       <ul
-        className="navbar-nav  sidebar sidebar-dark accordion topsie text-center"
+        className="navbar-nav sidebar sidebar-dark accordion topsie text-center"
         id="accordionSidebar"
       >
         <Link
@@ -21,20 +21,31 @@ const Sidebar = () => {
         <hr className="sidebar-divider my-0" />
         <hr className="sidebar-divider" />
 
-        <li className={`nav-item ${location.pathname === '/' ? 'active' : ''}`}>
-          <Link className="nav-link  " to="/">
+        <li className={`nav-item ${location.pathname === "/" ? "active" : ""}`}>
+          <Link className="nav-link" to="/">
+            <i className="fas fa-shopping-cart mr-2"></i>
             <span className="orders">Order</span>
           </Link>
         </li>
 
-        <li className={`nav-item ${location.pathname === '/settings' ? 'active' : ''}`}>
+        <li
+          className={`nav-item ${
+            location.pathname === "/settings" ? "active" : ""
+          }`}
+        >
           <Link className="nav-link" to="/settings">
+            <i className="fas fa-cog mr-2"></i>
             <span className="orders">Settings</span>
           </Link>
         </li>
 
-        <li className={`nav-item ${location.pathname === '/login' ? 'active' : ''}`}>
+        <li
+          className={`nav-item ${
+            location.pathname === "/login" ? "active" : ""
+          }`}
+        >
           <Link className="nav-link" to="/login">
+            <i className="fas fa-sign-in-alt mr-2"></i>
             <span className="orders">Login</span>
           </Link>
         </li>
@@ -42,3 +53,5 @@ const Sidebar = () => {
     </div>
   );
 };
+
+export default Sidebar;
