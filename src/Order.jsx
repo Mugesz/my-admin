@@ -10,8 +10,7 @@ const UserList = () => {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(0);
   const [perPage, setPerpage] = useState(10);
- 
- 
+
   const handleChangeperPage = (e, newPage) => {
     setPage(newPage);
   };
@@ -35,8 +34,6 @@ const UserList = () => {
     }
   };
 
- 
-
   const allData = async () => {
     try {
       const response = await axios.get(
@@ -51,20 +48,23 @@ const UserList = () => {
   useEffect(() => {
     allData();
   }, []);
-  return (
-    <div className="bg-light" >
-      {" "}
-      <Topbar />
-      <div className="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 className="h3 mb-2 text-warning">ORDERS TABLE </h1>
-        <Link
-          to="/create-order"
-          className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-        >
-          <i className="fas fa-download fa-sm text-white-50"></i> Create Order
-        </Link>
-      </div>
-      <div className="input-group mb-3">
+
+
+
+return (
+  <div className="container-fluid">
+    <Topbar />
+    <div className="d-sm-flex align-items-center justify-content-between mb-4 mr-5">
+      <h1 className="h3 mb-2 text-black mt-2 ml-3">Orders Table </h1>
+      <Link
+        to="/create-order"
+        className="d-none mt-2 d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+      >
+        <i className="fas fa-download fa-sm text-white-50"></i> Create Order
+      </Link>
+    </div>
+    <div className="row ml-5">
+      <div className="input-group mb-3 col-6">
         <button className="btn btn-outline-secondary" type="button">
           Order Number
         </button>
@@ -78,75 +78,79 @@ const UserList = () => {
           }}
         />
       </div>
-      <div
-        className=
-          "card shadow  bg-light"
-      
-      >
-        <div
-          className=
-           "card-header bg-light"
-             
-
-   
-        >
-          <div className="card-body ">
-            <div className="table-responsive" style={{ maxHeight: "410px" }}>
-              <table
-                className="table table-bordered"
-                id="dataTable"
-                width="100%"
+    </div>
+    <div className="card shadow bg-light">
+      <div className="card-header bg-light">
+        <div className="card-body">
+          {myData.length === 0 ? (
+            <p>No orders found</p>
+          ) : (
+            <>
+              <div
+                className="table-responsive"
+                style={{ maxHeight: "360px" }}
               >
-                <thead className="position-sticky">
-                  <tr>
-                    <th className="bg-gradient-success text-light">ORDER ID</th>
-                    <th className="bg-gradient-success text-light">ORDER NUMBER</th>
-                    <th className="bg-gradient-success text-light">ITEM</th>
-                    <th className="bg-gradient-success text-light">CUSTOMER NAME</th>
-                    <th className="bg-gradient-success text-light">TRACKING CODE</th>
-                    <th className="bg-gradient-success text-light">status</th>
-                    <th className="bg-gradient-success text-light">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {myData
-                    .slice(page * perPage, page * perPage + perPage)
-                    .filter((item) => {
-                      if (search === "") {
-                        return item;
-                      } else if (item.orderNumber.toString().includes(search)) {
-                        return item;
-                      }
-                    })
-                    .map((item, index) => (
-                      <tr key={index}>
-                        <td>{item.orderId}</td>
-                        <td>{item.orderNumber}</td>
-                        <td>{item.item}</td>
-                        <td>{item.customerName}</td>
-                        <td>{item.trackingCode}</td>
-                        <td>{item.status}</td>
-                        <td>
-                          <div className="text-center">
-                            <button
-                              className="btn btn-sm btn-danger"
-                              onClick={() => handleDelete(item.id)}
-                            >
-                              delete
-                            </button>
-                            <Link to={`/edit-order/${item.id}`}>
-                              <button
-                                className="btn btn-sm btn-warning ml-2"                             
-                              >
-                                edit
-                              </button>
-                            </Link>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
+                <table className="table table-bordered" id="dataTable" width="100%">
+                  <thead className="position-sticky">
+                    <tr>
+                      <th className="bg-gradient-success text-light">ORDER ID</th>
+                      <th className="bg-gradient-success text-light">ORDER NUMBER</th>
+                      <th className="bg-gradient-success text-light">ITEM</th>
+                      <th className="bg-gradient-success text-light">CUSTOMER NAME</th>
+                      <th className="bg-gradient-success text-light">TRACKING CODE</th>
+                      <th className="bg-gradient-success text-light">status</th>
+                      <th className="bg-gradient-success text-light">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {myData
+                      .slice(page * perPage, page * perPage + perPage)
+                      .filter((item) => {
+                        if (search === "") {
+                          return item;
+                        } else if (item.orderNumber.toString().includes(search)) {
+                          return item;
+                        }
+                      })
+                      .map((item, index) => (
+                        <React.Fragment key={index}>
+                          <tr>
+                            <td>{item.orderId}</td>
+                            <td>{item.orderNumber}</td>
+                            <td>{item.item}</td>
+                            <td>{item.customerName}</td>
+                            <td>{item.trackingCode}</td>
+                            <td>{item.status}</td>
+                            <td>
+                              <div className="text-center">
+                                <button
+                                  className="btn btn-sm btn-danger"
+                                  onClick={() => handleDelete(item.id)}
+                                >
+                                  delete
+                                </button>
+                                <Link to={`/edit-order/${item.id}`}>
+                                  <button className="btn btn-sm btn-warning ml-2">
+                                    edit
+                                  </button>
+                                </Link>
+                              </div>
+                            </td>
+                          </tr>
+                        </React.Fragment>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {myData
+                .slice(page * perPage, page * perPage + perPage)
+                .filter((item) => {
+                  if (search === "") {
+                    return item;
+                  } else if (item.orderNumber.toString().includes(search)) {
+                    return item;
+                  }
+                }).length === 0 && <p>No matching orders found</p>}
               <TablePagination
                 rowsPerPageOptions={[10]}
                 page={page}
@@ -156,12 +160,14 @@ const UserList = () => {
                 onPageChange={handleChangeperPage}
                 onRowsPerPageChange={handleperChange}
               />
-            </div>
-          </div>
+            </>
+          )}
         </div>
       </div>
     </div>
-  );
+  </div>
+);
 };
+
 
 export default UserList;
